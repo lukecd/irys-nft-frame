@@ -15,7 +15,7 @@ const handleRequest = frames(async (ctx) => {
 	console.log({ tokenUrl });
 	if (page === "initial")
 		return {
-			image: imageUrl,
+			image: "https://irys-nft-frame.vercel.app/sunrise-square.png",
 			buttons: [
 				<Button action="post" target={{ query: { page: "result" } }}>
 					Recast Me, Follow Me, Then Mint Away!
