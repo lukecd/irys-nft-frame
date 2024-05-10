@@ -15,7 +15,7 @@ const handleRequest = frames(async (ctx) => {
 	console.log({ tokenUrl });
 	if (page === "initial")
 		return {
-			image: "https://irys-nft-frame.vercel.app/sunrise-square.png",
+			image: imageUrl,
 			buttons: [
 				<Button action="post" target={{ query: { page: "result" } }}>
 					Recast Me, Follow Me, Then Mint Away!
@@ -26,27 +26,28 @@ const handleRequest = frames(async (ctx) => {
 		image: (
 			<div style={{ display: "flex", flexDirection: "column" }}>
 				{ctx.message?.requesterFollowsCaster ? "Thanks for the follow." : "How about a follow?"}
+				<br />
 				{ctx.message?.recastedCast ? "Thanks for the recast" : "Can I get a recast?"}
 			</div>
 		),
 		buttons: [
-			ctx.message?.requesterFollowsCaster && ctx.message?.recastedCast ? (
-				<Button
-					action="mint"
-					key="mint-button"
-					target={getTokenUrl({
-						address: "0x2620443FdFA5506705458bDc9fB864058028A686",
-						chain: baseSepolia,
-						tokenId: "0",
-					})}
-				>
-					Mint
-				</Button>
-			) : (
-				<Button action="post" target={{ query: { page: "result" } }}>
-					Check Again, Yo
-				</Button>
-			),
+			// ctx.message?.requesterFollowsCaster && ctx.message?.recastedCast ? (
+			<Button
+				action="mint"
+				key="mint-button"
+				target={getTokenUrl({
+					address: "0x2620443FdFA5506705458bDc9fB864058028A686",
+					chain: baseSepolia,
+					tokenId: "0",
+				})}
+			>
+				Mint
+			</Button>,
+			// ) : (
+			// 	<Button action="post" target={{ query: { page: "result" } }}>
+			// 		Check Again, Yo
+			// 	</Button>
+			// ),
 		],
 	};
 });
