@@ -6,7 +6,7 @@ import { frames } from "./frames";
 
 const handleRequest = frames(async (ctx) => {
 	const page = ctx.searchParams?.page ?? "initial";
-	const imageUrl = process.env.NEXT_PUBLIC_HOST + "/sunrise-square.png";
+	const imageUrl = process.env.NEXT_PUBLIC_HOST + "/tree-wif-hat-rectangle.png";
 	const tokenUrl = getTokenUrl({
 		address: "0x2620443FdFA5506705458bDc9fB864058028A686",
 		chain: baseSepolia,
@@ -42,6 +42,9 @@ const handleRequest = frames(async (ctx) => {
 				})}
 			>
 				Mint
+			</Button>,
+			<Button action="tx" target="/txdata" post_url="/frames">
+				Tx action mint
 			</Button>,
 			// ) : (
 			// 	<Button action="post" target={{ query: { page: "result" } }}>
